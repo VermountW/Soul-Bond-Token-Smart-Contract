@@ -1,0 +1,131 @@
+{
+  "address": "0xcEc8c995D20693aDB1148fC78FB552b2dB6648a2",
+  "abi": [
+      {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+      },
+      {
+          "inputs": [
+              {
+                  "internalType": "address",
+                  "name": "to",
+                  "type": "address"
+              },
+              {
+                  "internalType": "string",
+                  "name": "nama",
+                  "type": "string"
+              },
+              {
+                  "internalType": "string",
+                  "name": "fakultas",
+                  "type": "string"
+              },
+              {
+                  "internalType": "string",
+                  "name": "gender",
+                  "type": "string"
+              }
+          ],
+          "name": "mint",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+      },
+      {
+          "inputs": [
+              {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+              }
+          ],
+          "name": "getSBTData",
+          "outputs": [
+              {
+                  "components": [
+                      {
+                          "internalType": "string",
+                          "name": "nama",
+                          "type": "string"
+                      },
+                      {
+                          "internalType": "string",
+                          "name": "fakultas",
+                          "type": "string"
+                      },
+                      {
+                          "internalType": "string",
+                          "name": "gender",
+                          "type": "string"
+                      }
+                  ],
+                  "internalType": "struct UniversitySBT.SBTData",
+                  "name": "",
+                  "type": "tuple"
+              }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+      },
+      {
+          "inputs": [
+              {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+              }
+          ],
+          "name": "tokenURI",
+          "outputs": [
+              {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+              }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+      },
+      {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+              {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+              }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+      },
+      {
+          "anonymous": false,
+          "inputs": [
+              {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "from",
+                  "type": "address"
+              },
+              {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "to",
+                  "type": "address"
+              },
+              {
+                  "indexed": true,
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+              }
+          ],
+          "name": "Transfer",
+          "type": "event"
+      }
+  ]
+}
