@@ -1359,7 +1359,6 @@ contract HackerHouseSBT is ERC721 {
 
     constructor() ERC721("HackerHouseSBT", "SBT") {}
 
-    // Modified: Removed `onlyOwner` to allow public minting
     function mint(
         string memory name,
         string memory specialty,
@@ -1371,21 +1370,22 @@ contract HackerHouseSBT is ERC721 {
         );
         _tokenIdCounter++;
         uint256 tokenId = _tokenIdCounter;
-        _mint(msg.sender, tokenId); // Mint to the caller's address
+        _mint(msg.sender, tokenId);
         _sbtData[tokenId] = SBTData(name, specialty, gender);
         _ownerTokenId[msg.sender] = tokenId;
     }
 
-    // Rest of the contract remains unchanged...
     function getSBTData(address owner) public view returns (SBTData memory) {
         uint256 tokenId = _ownerTokenId[owner];
         require(tokenId != 0, "This address does not have an SBT");
         return _sbtData[tokenId];
     }
 
-    function tokenURI(
-        uint256 tokenId
-    ) public view override returns (string memory) {
+    function getOwnerTokenId(address owner) public view returns (uint256) {
+        return _ownerTokenId[owner]; // ✅ Fix: Now you can access the mapping
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(_exists(tokenId), "Token does not exist");
         SBTData memory data = _sbtData[tokenId];
         bytes memory json = abi.encodePacked(
@@ -1398,13 +1398,9 @@ contract HackerHouseSBT is ERC721 {
             '"},',
             '{"trait_type": "Gender", "value": "',
             data.gender,
-            '"}',
-            "]}"
+            '"}]}'
         );
-        return
-            string(
-                abi.encodePacked("data:application/json;base64,", json.encode())
-            );
+        return string(abi.encodePacked("data:application/json;base64,", json.encode()));
     }
 
     function _beforeTokenTransfer(
