@@ -1,13 +1,29 @@
-# Sample Hardhat Project
+# HackerHouseSBT
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Soulbound Token (SBT) implementation using the ERC721 standard. This smart contract allows users to mint a non-transferable SBT that represents their identity, including name, specialty, and gender.
 
-Try running some of the following tasks:
+## Features
+- Each address can only mint one SBT.
+- The SBT contains personal information: `name`, `specialty`, and `gender`.
+- The SBT is **non-transferable**.
+- Provides metadata in Base64-encoded JSON format.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
+## Deploying the Contract Using Hardhat
+
+### 1. Compile the Contract
+```bash
+npx hardhat compile
+```
+### 2. Setting Environment Variables
+```bash
+npx hardhat vars set PRIVATE_KEY
+```
+
+### 3. Deploy the Contract
+```bash
+npx hardhat run scripts/deploy.ts --network mantaPacificTestnet
+```
+### 4. Verifying the Contract
+```bash
+npx hardhat verify --network mantaPacificTestnet <DEPLOYED_CONTRACT_ADDRESS>
 ```
